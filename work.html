@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — John</title>
+<meta name="description" content="Selected graphic design projects: church, birthday, branding, and social media design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <!-- EDIT: your name or studio name -->
+    <a href="index.html" class="brand">John</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html" aria-current="page">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<main>
+
+<section class="page-head" style="border-bottom:none;padding-bottom:24px;">
+  <div class="inner">
+    <p class="label">Work</p>
+    <h1>Selected projects</h1>
+    <p class="lead">Browse everything, or filter by the kind of design you need. Open any project to read the full case study.</p>
+  </div>
+</section>
+
+<section class="last" style="padding-top:32px;">
+  <div class="inner">
+    <!-- To add a category: add a new <button class="chip" data-filter="newname"> below,
+         then give the matching project cards data-category="newname" -->
+    <div class="filters" role="group" aria-label="Filter projects by category">
+      <button class="chip is-active" data-filter="all" aria-pressed="true">All projects</button>
+      <button class="chip" data-filter="church" aria-pressed="false">Church</button>
+      <button class="chip" data-filter="birthday" aria-pressed="false">Birthday</button>
+      <button class="chip" data-filter="branding" aria-pressed="false">Branding</button>
+      <button class="chip" data-filter="social" aria-pressed="false">Social media</button>
+    </div>
+    <div class="grid-3">
+      <!-- EDIT: project card — swap the placeholder for <img src="images/church-conference-campaign.jpg" alt="Church Conference Campaign"> -->
+      <a class="project" href="case-study-church-conference-campaign.html" data-category="church">
+        <div class="media"><div class="placeholder">Project preview</div></div>
+        <div class="project-body">
+          <p class="project-cat">Church design</p>
+          <h3>Church Conference Campaign</h3>
+          <p class="desc">Visual identity and social media flyers for a church conference campaign.</p>
+        </div>
+      </a>
+
+      <!-- EDIT: project card — swap the placeholder for <img src="images/foodtalk-social-series.jpg" alt="Foodtalk Social Series"> -->
+      <a class="project" href="case-study-foodtalk-social-series.html" data-category="social">
+        <div class="media"><div class="placeholder">Project preview</div></div>
+        <div class="project-body">
+          <p class="project-cat">Social media design</p>
+          <h3>Foodtalk Social Series</h3>
+          <p class="desc">Content-focused visuals designed for engagement and storytelling.</p>
+        </div>
+      </a>
+
+      <!-- EDIT: project card — swap the placeholder for <img src="images/brand-identity-project.jpg" alt="Brand Identity Project"> -->
+      <a class="project" href="case-study-brand-identity-project.html" data-category="branding">
+        <div class="media"><div class="placeholder">Project preview</div></div>
+        <div class="project-body">
+          <p class="project-cat">Branding</p>
+          <h3>Brand Identity Project</h3>
+          <p class="desc">Logo and visual system built for a modern creative brand.</p>
+        </div>
+      </a>
+
+      <!-- EDIT: project card — swap the placeholder for <img src="images/birthday-flyer-collection.jpg" alt="Birthday Flyer Collection"> -->
+      <a class="project" href="case-study-birthday-flyer-collection.html" data-category="birthday">
+        <div class="media"><div class="placeholder">Project preview</div></div>
+        <div class="project-body">
+          <p class="project-cat">Birthday</p>
+          <h3>Birthday Flyer Collection</h3>
+          <p class="desc">Celebration flyers and invitations designed for print and phone screens.</p>
+        </div>
+      </a>
+    </div>
+    <p class="empty-note" id="emptyNote" hidden>No projects in this category yet. Check back soon.</p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 John. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
