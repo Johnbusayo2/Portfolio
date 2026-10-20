@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John — Graphic & Brand Design</title>
+<meta name="description" content="Graphic design portfolio — branding, print, and digital work.">
+
+<!--
+  ============================================================
+  HOW TO CUSTOMIZE THIS FILE — read me first
+  ============================================================
+  1. Search for "EDIT:" comments throughout this file — each one
+     marks something you should personalize (your name, email,
+     socials, project titles, bio).
+  2. To swap a placeholder project block for a real image:
+     find the <div class="thumb thumb--01"> (etc.) and replace it
+     with <img src="images/your-file.jpg" alt="Project name">
+     — put your image files in a folder named "images" next to
+     this index.html file.
+  3. To add more projects, copy one whole <article class="card">
+     block and paste it before the "add project" card.
+  4. Colors and fonts live at the top of the <style> section
+     under :root — change the hex values there to re-theme
+     the whole site at once.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #FAFAF8;
+    --paper-dim: #F1F0EA;
+    --ink: #171717;
+    --muted: #6E6E69;
+    --line: #DEDDD5;
+    --accent: #EC008C;   /* proof-magenta — primary interactive accent */
+    --cyan: #00AEEF;
+    --yellow: #FFD400;
+    --key: #171717;
+    --radius: 2px;
+    --max: 1100px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- CMYK dot mark (signature element) ---------- */
+  .mark {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 7px);
+    grid-template-rows: repeat(2, 7px);
+    gap: 3px;
+    flex-shrink: 0;
+  }
+  .mark span { border-radius: 50%; display: block; width: 7px; height: 7px; }
+  .mark span:nth-child(1) { background: var(--cyan); }
+  .mark span:nth-child(2) { background: var(--accent); }
+  .mark span:nth-child(3) { background: var(--yellow); }
+  .mark span:nth-child(4) { background: var(--key); }
+
+  /* ---------- header / nav ---------- */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.85);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  @media (max-width: 720px) {
+    .nav-links {
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .nav-links.open { max-height: 260px; }
+    .nav-links a {
+      display: block;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-toggle { display: block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 150px 0 90px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px; height: 1px;
+    background: var(--muted);
+  }
+  h1.headline {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0 0 28px;
+    max-width: 14ch;
+  }
+  h1.headline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    max-width: 46ch;
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 36px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: 1px solid var(--ink);
+  }
+  .btn--solid { background: var(--ink); color: var(--paper); }
+  .btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+  .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- section shell ---------- */
+  section { padding: 90px 0; border-bottom: 1px solid var(--line); }
+  .section-head { margin-bottom: 50px; }
+  .section-head h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 12px 0 0;
+  }
+
+  /* ---------- work grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card.is-visible { opacity: 1; transform: translateY(0); }
+  .card:hover { border-color: var(--ink); box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+
+  /* EDIT: replace each .thumb div with <img src="images/yourfile.jpg" alt="..."> */
+  .thumb {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .thumb--01 { background: linear-gradient(135deg, #171717, #3a3a3a); }
+  .thumb--02 { background: linear-gradient(135deg, #EC008C, #7a0055); }
+  .thumb--03 { background: linear-gradient(135deg, #FFD400, #c99900); }
+  .thumb--04 { background: linear-gradient(135deg, #00AEEF, #005e80); }
+  .thumb--05 { background: linear-gradient(135deg, #6E6E69, #2b2b28); }
+
+  .thumb-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    background: rgba(0,0,0,0.25);
+    padding: 4px 8px;
+    border-radius: 20px;
+  }
+
+  /* crop marks — appear on hover, referencing print trim marks */
+  .crop {
+    position: absolute;
+    width: 14px; height: 14px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .card:hover .crop { opacity: 0.9; }
+  .crop--tl { top: 8px; left: 8px; border-top: 2px solid #fff; border-left: 2px solid #fff; }
+  .crop--tr { top: 8px; right: 8px; border-top: 2px solid #fff; border-right: 2px solid #fff; }
+  .crop--bl { bottom: 8px; left: 8px; border-bottom: 2px solid #fff; border-left: 2px solid #fff; }
+  .crop--br { bottom: 8px; right: 8px; border-bottom: 2px solid #fff; border-right: 2px solid #fff; }
+
+  .card-body { padding: 20px 20px 22px; }
+  .job-no { font-size: 11px; color: var(--muted); display: block; margin-bottom: 8px; }
+  .card h3 { font-size: 18px; margin: 0 0 8px; }
+  .card p { font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    color: var(--muted);
+  }
+
+  /* empty-state "add project" card */
+  .card--add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    border: 1px dashed var(--line);
+    background: transparent;
+    color: var(--muted);
+    text-align: center;
+    padding: 24px;
+  }
+  .card--add:hover { border-color: var(--accent); color: var(--accent); }
+  .card--add .plus {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-family: 'Archivo Black', sans-serif;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .portrait {
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-dim);
+  }
+  /* EDIT: replace .portrait contents with <img src="images/you.jpg" alt="John"> */
+  .portrait .mark { transform: scale(2.6); }
+
+  .about-bio p { font-size: 17px; max-width: 62ch; margin: 0 0 20px; }
+  .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .skills .tag { color: var(--ink); border-color: var(--ink); }
+
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait { width: 140px; }
+  }
+
+  /* ---------- contact ---------- */
+  .contact { border-bottom: none; }
+  .contact h2.big {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 5.5vw, 3.6rem);
+    line-height: 1.05;
+    margin: 12px 0 34px;
+    max-width: 16ch;
+  }
+  .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  footer {
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer .mark { transform: scale(0.85); }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- category sections ---------- */
+  .category { margin-bottom: 70px; }
+  .category:last-child { margin-bottom: 0; }
+  .cat-head { margin-bottom: 26px; padding-top: 22px; border-top: 1px solid var(--ink); }
+  .cat-label { font-size: 11px; color: var(--accent); display: block; margin-bottom: 8px; }
+  .cat-title { font-family: 'Archivo Black', sans-serif; font-weight: 400; font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 0 0 6px; }
+  .cat-blurb { color: var(--muted); font-size: 15px; margin: 0; max-width: 56ch; }
+
+  /* use this once your real images are in: makes <img> fill the card neatly */
+  .card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <!-- EDIT: swap "John" for your full name / studio name if you'd like -->
+    <a href="#" class="wordmark">
+      <span class="mark"><span></span><span></span><span></span><span></span></span>
+      JOHN
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow mono">PORTFOLIO — GRAPHIC & BRAND DESIGN</p>
+    <!-- EDIT: your headline -->
+    <h1 class="headline">Design made to be <em>seen</em> — on the feed, and off it.</h1>
+    <p class="hero-sub">
+      I'm John, a graphic designer working across branding, print, and digital —
+      flyers, social campaigns, and identities built for real audiences, not
+      just the pitch deck.
+    </p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn--solid">See the work</a>
+      <a href="#contact" class="btn btn--ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow mono">SELECTED WORK</p>
+      <h2>Work</h2>
+    </div>
+    <!-- To add a new category: copy a whole <div class="category"> block, rename it, and edit the cards inside -->
+
+    <!-- ======== CATEGORY: CATEGORY 01 ======== -->
+    <div class="category" id="church">
+      <div class="cat-head reveal">
+        <span class="mono cat-label">CATEGORY 01</span>
+        <h3 class="cat-title">Church & Community</h3>
+        <p class="cat-blurb">Event flyers and graphics for churches, ministries, and community gatherings.</p>
+      </div>
+      <div class="grid">
+        <!-- EDIT: project card — replace the thumb div with <img src="images/yourfile.jpg" alt="..."> -->
+        <article class="card reveal">
+          <div class="thumb thumb--01">
+            <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+            <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+            <span class="thumb-tag mono">PRINT / SOCIAL</span>
+          </div>
+          <div class="card-body">
+            <span class="job-no mono">JOB No. 01</span>
+            <h3>Osogbo Prays — Prayer Convergence</h3>
+            <p>Event flyer for a community prayer gathering, built to stay sharp on WhatsApp and Instagram.</p>
+            <div class="tags"><span class="tag">Flyer Design</span><span class="tag">Social</span></div>
+          </div>
+        </article>
+
+        <!-- EDIT: project card — replace the thumb div with <img src="images/yourfile.jpg" alt="..."> -->
+        <article class="card reveal">
+          <div class="thumb thumb--05">
+            <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+            <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+            <span class="thumb-tag mono">PRINT / EVENT</span>
+          </div>
+          <div class="card-body">
+            <span class="job-no mono">JOB No. 02</span>
+            <h3>Community Church — Event Flyer Series</h3>
+            <p>A recurring flyer system for weekly church events, designed for fast turnaround without losing consistency.</p>
+            <div class="tags"><span class="tag">Flyer Design</span><span class="tag">Series</span></div>
+          </div>
+        </article>
+
+        <!-- Copy a whole <article class="card"> block and paste it above this card to add a project -->
+        <article class="card card--add reveal">
+          <div>
+            <span class="plus">+</span>
+            <span class="mono" style="font-size:13px;">Add a project</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ======== CATEGORY: CATEGORY 02 ======== -->
+    <div class="category" id="birthday">
+      <div class="cat-head reveal">
+        <span class="mono cat-label">CATEGORY 02</span>
+        <h3 class="cat-title">Birthday & Celebration</h3>
+        <p class="cat-blurb">Invitations, flyers, and matching social graphics for milestones and parties.</p>
+      </div>
+      <div class="grid">
+        <!-- EDIT: project card — replace the thumb div with <img src="images/yourfile.jpg" alt="..."> -->
+        <article class="card reveal">
+          <div class="thumb thumb--03">
+            <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+            <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+            <span class="thumb-tag mono">PRINT / CELEBRATION</span>
+          </div>
+          <div class="card-body">
+            <span class="job-no mono">JOB No. 03</span>
+            <h3>Golden Hour — Birthday Suite</h3>
+            <p>Invitation, flyer, and matching social assets for a milestone birthday celebration.</p>
+            <div class="tags"><span class="tag">Flyer Design</span><span class="tag">Print</span></div>
+          </div>
+        </article>
+
+        <!-- Copy a whole <article class="card"> block and paste it above this card to add a project -->
+        <article class="card card--add reveal">
+          <div>
+            <span class="plus">+</span>
+            <span class="mono" style="font-size:13px;">Add a project</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ======== CATEGORY: CATEGORY 03 ======== -->
+    <div class="category" id="branding">
+      <div class="cat-head reveal">
+        <span class="mono cat-label">CATEGORY 03</span>
+        <h3 class="cat-title">Branding & Identity</h3>
+        <p class="cat-blurb">Logos, color systems, and print collateral that make a brand feel consistent.</p>
+      </div>
+      <div class="grid">
+        <!-- EDIT: project card — replace the thumb div with <img src="images/yourfile.jpg" alt="..."> -->
+        <article class="card reveal">
+          <div class="thumb thumb--02">
+            <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+            <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+            <span class="thumb-tag mono">BRANDING / PRINT</span>
+          </div>
+          <div class="card-body">
+            <span class="job-no mono">JOB No. 04</span>
+            <h3>Grace & Grove — Brand Identity</h3>
+            <p>A full identity system — logo, palette, and print collateral — for a boutique client.</p>
+            <div class="tags"><span class="tag">Branding</span><span class="tag">Identity</span></div>
+          </div>
+        </article>
+
+        <!-- Copy a whole <article class="card"> block and paste it above this card to add a project -->
+        <article class="card card--add reveal">
+          <div>
+            <span class="plus">+</span>
+            <span class="mono" style="font-size:13px;">Add a project</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- ======== CATEGORY: CATEGORY 04 ======== -->
+    <div class="category" id="social">
+      <div class="cat-head reveal">
+        <span class="mono cat-label">CATEGORY 04</span>
+        <h3 class="cat-title">Social Media</h3>
+        <p class="cat-blurb">Content systems and campaign graphics designed for the feed.</p>
+      </div>
+      <div class="grid">
+        <!-- EDIT: project card — replace the thumb div with <img src="images/yourfile.jpg" alt="..."> -->
+        <article class="card reveal">
+          <div class="thumb thumb--04">
+            <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+            <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+            <span class="thumb-tag mono">DIGITAL / SOCIAL</span>
+          </div>
+          <div class="card-body">
+            <span class="job-no mono">JOB No. 05</span>
+            <h3>Mobil Accessories — Social Campaign</h3>
+            <p>Instagram-first content system for a consumer accessories brand, built around driving sales conversion.</p>
+            <div class="tags"><span class="tag">Campaign</span><span class="tag">Instagram</span></div>
+          </div>
+        </article>
+
+        <!-- Copy a whole <article class="card"> block and paste it above this card to add a project -->
+        <article class="card card--add reveal">
+          <div>
+            <span class="plus">+</span>
+            <span class="mono" style="font-size:13px;">Add a project</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow mono">ABOUT</p>
+      <h2>Behind the work</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="portrait">
+        <!-- EDIT: replace this div's content with <img src="images/you.jpg" alt="John"> -->
+        <span class="mark"><span></span><span></span><span></span><span></span></span>
+      </div>
+      <div class="about-bio">
+        <!-- EDIT: your bio -->
+        <p>
+          John is a graphic designer working across branding, print, and
+          digital — from event flyers and birthday suites to full brand
+          identities and social campaigns.
+        </p>
+        <p>
+          He designs with the how in mind: how it reads on a phone screen
+          mid-scroll, how it holds up printed and pinned to a board, and how
+          it moves someone to actually show up.
+        </p>
+        <div class="skills">
+          <!-- EDIT: your tools / skills -->
+          <span class="tag">Adobe Illustrator</span>
+          <span class="tag">Adobe Photoshop</span>
+          <span class="tag">Adobe InDesign</span>
+          <span class="tag">Brand Identity</span>
+          <span class="tag">Print Design</span>
+          <span class="tag">Social Media Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact wrap">
+    <p class="eyebrow mono reveal">CONTACT</p>
+    <h2 class="big reveal">Let's design something people stop scrolling for.</h2>
+    <div class="contact-links reveal">
+      <!-- EDIT: your real email, WhatsApp number, and Instagram handle -->
+      <a class="btn btn--solid" href="mailto:hello@example.com">Email me</a>
+      <a class="btn btn--ghost" href="https://wa.me/10000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn--ghost" href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 John. Design & build.</span>
+  <span class="mark"><span></span><span></span><span></span><span></span></span>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  }
+</script>
+
+</body>
+</html>
